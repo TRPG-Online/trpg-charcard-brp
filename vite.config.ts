@@ -5,6 +5,9 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [reactRefresh()],
+  esbuild: {
+    jsxInject: `import React from 'react'`,
+  },
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/out.ts'),

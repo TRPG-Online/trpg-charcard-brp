@@ -1,5 +1,5 @@
 const App: React.FC = () => {
-  return null
+  return <h1>Hello World</h1>
 }
 
 export default App
