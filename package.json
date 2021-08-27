@@ -2,7 +2,9 @@
   "name": "trpg-charsheet-brp",
   "version": "0.0.0",
   "license": "MIT",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/trpg-char.umd.js",
   "module": "./dist/trpg-char.es.js",
   "exports": {
@@ -17,8 +19,12 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.4.1",
+    "mobx": "^6.3.2",
+    "mobx-react": "^7.2.0",
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "rxjs": "^7.3.0"
   },
   "devDependencies": {
     "@types/node": "^16.7.1",
