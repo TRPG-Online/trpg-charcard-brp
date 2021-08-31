@@ -15,6 +15,9 @@ export const StoreContext = createContext<SheetStore>(new SheetStore(mockStore))
 /** UI state */
 const initState = {
   tab: 'baseInfo' as TabName,
+  setTab(t: TabName) {
+    this.tab = t
+  },
 }
 export const UIState = createContext<typeof initState>(initState)
 

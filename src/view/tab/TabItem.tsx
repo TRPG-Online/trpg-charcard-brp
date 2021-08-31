@@ -1,14 +1,20 @@
 import { css } from '@emotion/react'
+import { useCallback, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
+import { UIState } from '../App'
 import { TabName } from './TabBar'
 
 interface TabProps {
   label: TabName
 }
 const TabItem: React.FC<TabProps> = ({ label }) => {
+  const state = useContext(UIState)
+  const handleClick = useCallback(() => state.setTab(label), [])
+
   const { t } = useTranslation('tab')
+
   return (
-    <div css={s}>
+    <div css={s} onClick={handleClick}>
       <span>{t(label)}</span>
     </div>
   )

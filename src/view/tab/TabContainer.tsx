@@ -16,7 +16,11 @@ const TabContainer: React.FC = observer(() => {
   const state = useContext(UIState)
   return (
     <Suspense fallback={<h1>Loading</h1>}>
-      {createElement(pages[state.tab]) ?? <h2>{state.tab} is not found</h2>}
+      {pages[state.tab] ? (
+        createElement(pages[state.tab])
+      ) : (
+        <h2>{state.tab} is not found</h2>
+      )}
     </Suspense>
   )
 })
