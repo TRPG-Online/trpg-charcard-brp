@@ -1,17 +1,13 @@
-import { makeAutoObservable } from 'mobx'
-import { BaseInfo, BaseInfoStore } from './baseInfo'
-
-export interface SheetInit {
-  baseInfo: BaseInfo
-}
+import { PartialDeep } from 'type-fest'
+import { BaseInfo } from './baseInfo'
 
 class SheetStore {
-  baseInfo: BaseInfoStore
+  initState?: PartialDeep<SheetStore>
+  baseInfo: BaseInfo
 
-  constructor(initState: SheetInit) {
-    this.baseInfo = new BaseInfoStore(this, initState.baseInfo)
-
-    makeAutoObservable(this)
+  constructor(initState?: PartialDeep<SheetStore>) {
+    this.initState = initState
+    this.baseInfo = new BaseInfo(this)
   }
 }
 

@@ -1,6 +1,7 @@
-import { SheetInit } from '../store/sheetStore'
+import SheetStore from '../store/sheetStore'
+import { PartialDeep } from 'type-fest'
 
-const store: SheetInit = {
+const store: PartialDeep<SheetStore> = {
   baseInfo: {
     name: '张三',
     avatar: 'https://i.loli.net/2021/08/27/pogEzeW96bys2t8.png',

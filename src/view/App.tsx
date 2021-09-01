@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { createContext, useState } from 'react'
+import { createContext } from 'react'
 import mockStore from '../mock/mockStore'
 import SheetStore from '../store/sheetStore'
 import InfoBar from './infoBar/InfoBar'
@@ -21,8 +21,7 @@ const initState = {
 }
 export const UIState = createContext<typeof initState>(initState)
 
-const App: React.FC = () => {
-  const [store] = useState(new SheetStore(mockStore))
+const App: React.FC<{ store: SheetStore }> = ({ store }) => {
   const state = useLocalObservable(() => initState)
   return (
     <StoreContext.Provider value={store}>

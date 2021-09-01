@@ -9,8 +9,6 @@ export interface BaseInfo {
   name: string
   avatar: string
 
-  hp?: number
-  mp?: number
   luck: number
 
   job: string
@@ -30,31 +28,24 @@ export interface BaseInfo {
   mov: number
 }
 
-const defaultState: BaseInfo = {
-  name: '',
-  avatar: '',
-
-  luck: 0,
-
-  job: '',
-  age: 0,
-  sex: '',
-  location: '',
-  homeTown: '',
-
-  str: 0,
-  con: 0,
-  siz: 0,
-  dex: 0,
-  app: 0,
-  int: 0,
-  pow: 0,
-  edu: 0,
-  mov: 0,
-}
-
-export class BaseInfoStore implements BaseInfo {
+export class BaseInfo {
   private sheetStore: SheetStore
+
+  private _hp: number = NaN
+  private _mp: number = NaN
+
+  get hp() {
+    return this._hp === NaN ? this.maxHp : this._hp
+  }
+  set hp(val: number) {
+    this._hp = val
+  }
+  get mp() {
+    return this._mp === NaN ? this.maxMp : this._mp
+  }
+  set mp(val: number) {
+    this._mp = val
+  }
 
   get maxHp() {
     return Math.floor((this.con + this.siz) / 10)
@@ -63,33 +54,10 @@ export class BaseInfoStore implements BaseInfo {
     return Math.floor(this.pow / 5)
   }
 
-  constructor(sheetStore: SheetStore, initState: BaseInfo) {
+  constructor(sheetStore: SheetStore) {
     this.sheetStore = sheetStore
-    Object.assign(this, Object.seal(defaultState), initState)
-
-    //init hp mp
-    if (this.hp === undefined) this.hp = this.maxHp
-    if (this.mp === undefined) this.mp = this.maxMp
+    Object.assign(this, sheetStore.initState?.baseInfo)
 
     makeAutoObservable(this)
   }
-  name!: string
-  avatar!: string
-  hp!: number
-  mp!: number
-  luck!: number
-  job!: string
-  age!: number
-  sex!: string
-  location!: string
-  homeTown!: string
-  str!: number
-  con!: number
-  siz!: number
-  dex!: number
-  app!: number
-  int!: number
-  pow!: number
-  edu!: number
-  mov!: number
 }
