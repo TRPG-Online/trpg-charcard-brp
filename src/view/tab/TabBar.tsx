@@ -1,22 +1,40 @@
 import { css } from '@emotion/react'
-import TabItem from './TabItem'
+import { ExitTab, PageTab, SaveTab } from './TabItem'
 
 export type TabName = 'baseInfo' | 'skill' | 'magic' | 'story' | 'item'
 const tabs: TabName[] = ['baseInfo', 'skill', 'magic', 'story', 'item']
 const TabBar: React.FC = () => {
   return (
     <div css={style}>
-      {tabs.map(label => (
-        <TabItem key={label} label={label} />
-      ))}
+      <div className="sysTab">
+        <SaveTab />
+        <ExitTab />
+      </div>
+      <div className="pageTab">
+        {tabs.map(label => (
+          <PageTab key={label} label={label} />
+        ))}
+      </div>
     </div>
   )
 }
 
 const style = css`
-  height: 2.5em;
-  background-color: #5b5b5b;
-  display: flex;
+  min-width: 5em;
+  height: 100%;
+  background-color: #9d9d9d;
+  &,
+  .sysTab,
+  .pageTab {
+    display: flex;
+    flex-direction: column;
+  }
+  .sysTab {
+  }
+  .pageTab {
+    flex: 1;
+    justify-content: center;
+  }
 `
 
 export default TabBar

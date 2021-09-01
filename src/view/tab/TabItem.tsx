@@ -1,42 +1,34 @@
 import { css } from '@emotion/react'
-import { useCallback, useContext } from 'react'
+import React, { useCallback, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import { UIState } from '../App'
 import { TabName } from './TabBar'
+import TabItemBase from './TabItemBase'
 
 interface TabProps {
   label: TabName
 }
-const TabItem: React.FC<TabProps> = ({ label }) => {
+export const PageTab: React.FC<TabProps> = ({ label }) => {
   const state = useContext(UIState)
   const handleClick = useCallback(() => state.setTab(label), [])
 
   const { t } = useTranslation('tab')
 
-  return (
-    <div css={s} onClick={handleClick}>
-      <span>{t(label)}</span>
-    </div>
-  )
+  return <TabItemBase onClick={handleClick} text={t(label)} />
 }
 
-const s = css`
-  height: 100%;
-  padding: 0 2em;
+export const SaveTab: React.FC = () => {
+  const { t } = useTranslation('tab')
 
-  display: flex;
-  align-items: center;
+  return <TabItemBase css={topTabCss} text={t('save')} />
+}
 
-  :hover {
-    background-color: #8e8d8b;
-  }
+export const ExitTab: React.FC = () => {
+  const { t } = useTranslation('tab')
 
-  span {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    user-select: none;
-  }
+  return <TabItemBase css={topTabCss} text={t('exit')} />
+}
+
+const topTabCss = css`
+  justify-self: flex-start;
 `
-
-export default TabItem

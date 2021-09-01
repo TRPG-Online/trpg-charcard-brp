@@ -27,9 +27,12 @@ const App: React.FC<{ store: SheetStore }> = ({ store }) => {
     <StoreContext.Provider value={store}>
       <UIState.Provider value={state}>
         <div css={style}>
-          <InfoBar />
           <TabBar />
-          <TabContainer />
+          <div className="container">
+            <InfoBar />
+            <hr />
+            <TabContainer />
+          </div>
         </div>
       </UIState.Provider>
     </StoreContext.Provider>
@@ -37,12 +40,17 @@ const App: React.FC<{ store: SheetStore }> = ({ store }) => {
 }
 
 const style = css`
-  max-width: 900px;
   background-color: #eee;
-  margin: 0 auto;
-
   display: flex;
-  flex-direction: column;
+  min-width: 800px;
+  min-height: 600px;
+  width: 50vw;
+  height: 50vh;
+  margin: auto;
+
+  .container {
+    flex: 1;
+  }
 `
 
 export default App
