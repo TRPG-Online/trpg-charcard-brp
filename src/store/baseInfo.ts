@@ -35,13 +35,13 @@ export class BaseInfo {
   private _mp: number = NaN
 
   get hp() {
-    return this._hp === NaN ? this.maxHp : this._hp
+    return isNaN(this._hp) ? this.maxHp : this._hp
   }
   set hp(val: number) {
     this._hp = val
   }
   get mp() {
-    return this._mp === NaN ? this.maxMp : this._mp
+    return isNaN(this._mp) ? this.maxMp : this._mp
   }
   set mp(val: number) {
     this._mp = val
