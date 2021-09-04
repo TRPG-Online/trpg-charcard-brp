@@ -12,8 +12,10 @@ import { useLocalObservable } from 'mobx-react'
 
 export const StoreContext = createContext<SheetStore>(new SheetStore(mockStore))
 
+type SheetMode = 'template' | 'show' | 'edit'
 /** UI state */
 const initState = {
+  mode: 'edit' as SheetMode,
   tab: 'baseInfo' as TabName,
   setTab(t: TabName) {
     this.tab = t
@@ -50,6 +52,9 @@ const style = css`
 
   .container {
     flex: 1;
+    & > div {
+      margin: 0 1rem;
+    }
   }
 `
 

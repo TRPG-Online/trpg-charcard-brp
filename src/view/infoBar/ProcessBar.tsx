@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import { observer } from 'mobx-react'
 import { useContext } from 'react'
-import { BaseInfoStore } from '../../store/baseInfo'
+import { BaseInfo } from '../../store/baseInfo'
 import { StoreContext } from '../App'
 
 type ValueTypeFilter<T extends object, U> = Pick<
@@ -10,8 +10,8 @@ type ValueTypeFilter<T extends object, U> = Pick<
 >
 
 interface ProcessProps {
-  value: keyof ValueTypeFilter<BaseInfoStore, number>
-  maxValue: keyof ValueTypeFilter<BaseInfoStore, number>
+  value: keyof ValueTypeFilter<BaseInfo, number>
+  maxValue: keyof ValueTypeFilter<BaseInfo, number>
   color?: string
 }
 

@@ -1,6 +1,7 @@
 export default {
   translation: {
     title: 'BRP 人物卡',
+    selectAvatar: '点击选择头像',
   },
   tab: {
     baseInfo: '属性',
