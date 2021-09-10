@@ -39,4 +39,11 @@ export default {
     build: '体格',
     dodge: '闪避',
   },
+  skill: {
+    isJobSkill: '本职',
+    skillName: '技能',
+    initPoint: '初始值',
+    jobPoint: '职业',
+    interestPoint: '兴趣',
+  },
 }
