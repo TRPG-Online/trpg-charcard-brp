@@ -21,7 +21,6 @@ const TabBar: React.FC = () => {
 
 const style = css`
   min-width: 5em;
-  height: 100%;
   background-color: #9d9d9d;
   &,
   .sysTab,

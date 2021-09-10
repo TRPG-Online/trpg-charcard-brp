@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+import StoryInfo from './StoryInfo'
 
 const StoryPage: React.FC = () => {
   return (
@@ -6,7 +7,9 @@ const StoryPage: React.FC = () => {
       css={css`
         display: flex;
       `}
-    ></div>
+    >
+      <StoryInfo />
+    </div>
   )
 }
 

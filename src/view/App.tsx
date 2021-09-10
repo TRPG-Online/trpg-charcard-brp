@@ -33,7 +33,9 @@ const App: React.FC<{ store: SheetStore }> = ({ store }) => {
           <div className="container">
             <InfoBar />
             <hr />
-            <TabContainer />
+            <div className="containerWarpper">
+              <TabContainer />
+            </div>
           </div>
         </div>
       </UIState.Provider>
@@ -46,18 +48,26 @@ const style = css`
   display: flex;
   min-width: 800px;
   min-height: 600px;
-  width: 50vw;
-  height: 50vh;
+  max-width: 50vw;
+  max-height: 80vh;
+
   margin: auto;
 
   .container {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+
     & > div {
       margin: 0 1rem;
     }
 
     hr {
       margin: 1rem 0;
+    }
+    .containerWarpper {
+      flex: 1;
+      overflow: auto;
     }
   }
 `

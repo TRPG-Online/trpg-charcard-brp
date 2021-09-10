@@ -6,6 +6,7 @@ import { TabName } from './TabBar'
 const pages = {
   baseInfo: lazy(() => import('../baseInfo/BaseInfoPage')),
   skill: lazy(() => import('../skill/SkillPage')),
+  story: lazy(() => import('../story/StoryPage')),
 } as {
   [k in TabName]: React.LazyExoticComponent<any>
 }
