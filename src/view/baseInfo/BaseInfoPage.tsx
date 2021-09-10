@@ -7,12 +7,13 @@ const BaseInfoPage: React.FC = () => {
     <div
       css={css`
         display: flex;
+        column-gap: 1em;
 
         .charAttr {
           flex-basis: 60%;
         }
         .battleAttr {
-          flex-basis: 40%;
+          flex-grow: 1;
         }
       `}
     >

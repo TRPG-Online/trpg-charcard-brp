@@ -4,21 +4,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { observer } from 'mobx-react'
 import { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
+import GrayCard from '../../components/GrayCard'
 import { BaseInfo } from '../../store/baseInfo'
 import { StoreContext } from '../App'
 
 const CharAttr: React.FC = () => {
   return (
-    <div
+    <GrayCard
       className="charAttr"
       css={css`
         display: flex;
         max-width: 100%;
         flex-wrap: wrap;
-        background-color: #ddd;
-        border: solid 1px #9d9d9d;
-        padding: 1em;
-        min-height: 200px;
 
         & > .attribute {
           flex-basis: 33%;
@@ -34,7 +31,7 @@ const CharAttr: React.FC = () => {
       <Attribute label="siz" />
       <Attribute label="edu" />
       <Total />
-    </div>
+    </GrayCard>
   )
 }
 

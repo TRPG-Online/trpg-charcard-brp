@@ -2,20 +2,17 @@ import { css } from '@emotion/react'
 import { observer } from 'mobx-react'
 import { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
+import GrayCard from '../../components/GrayCard'
 import { BaseInfo } from '../../store/baseInfo'
 import { StoreContext } from '../App'
 
 const BattleAttr: React.FC = () => {
   return (
-    <div
+    <GrayCard
       className="battleAttr"
       css={css`
         display: flex;
         flex-direction: column;
-        background-color: #ddd;
-        border: solid 1px #9d9d9d;
-        padding: 1em;
-        min-height: 200px;
 
         & > .attribute {
           flex: auto;
@@ -26,7 +23,7 @@ const BattleAttr: React.FC = () => {
       <Attribute label="damageBonus" />
       <Attribute label="build" />
       <Attribute label="dodge" />
-    </div>
+    </GrayCard>
   )
 }
 
