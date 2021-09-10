@@ -26,6 +26,11 @@ export interface BaseInfo {
   pow: number
   edu: number
   mov: number
+
+  //battle
+  damageBonus: string
+  build: number
+  dodge: number
 }
 
 export class BaseInfo {
@@ -52,6 +57,19 @@ export class BaseInfo {
   }
   get maxMp() {
     return Math.floor(this.pow / 5)
+  }
+
+  get totalAttr() {
+    return (
+      this.str +
+      this.con +
+      this.siz +
+      this.dex +
+      this.app +
+      this.int +
+      this.pow +
+      this.edu
+    )
   }
 
   constructor(sheetStore: SheetStore) {

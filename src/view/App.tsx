@@ -55,6 +55,10 @@ const style = css`
     & > div {
       margin: 0 1rem;
     }
+
+    hr {
+      margin: 1rem 0;
+    }
   }
 `
 

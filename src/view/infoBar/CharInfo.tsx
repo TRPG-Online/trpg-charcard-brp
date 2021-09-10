@@ -1,9 +1,9 @@
 import { css } from '@emotion/react'
 import { observer } from 'mobx-react'
 import { useTranslation } from 'react-i18next'
-import ProcessBar from '../infoBar/ProcessBar'
+import ProcessBar from './ProcessBar'
 
-const BaseInfo: React.FC = () => {
+const CharInfo: React.FC = () => {
   return (
     <div css={infoCss}>
       <div className="left">
@@ -47,7 +47,7 @@ const infoCss = css`
   }
 `
 
-export default BaseInfo
+export default CharInfo
 
 interface AttrProps {
   label: string
@@ -89,10 +89,11 @@ const Avatar: React.FC = () => {
       css={css`
         display: inline-block;
         width: 20%;
-        background: green;
         position: relative;
         vertical-align: middle;
         text-align: center;
+        border: solid 1px #333;
+        border-radius: 50%;
         &:before {
           content: '';
           display: inline-block;

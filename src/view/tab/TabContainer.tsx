@@ -3,7 +3,9 @@ import { createElement, lazy, Suspense, useContext } from 'react'
 import { UIState } from '../App'
 import { TabName } from './TabBar'
 
-const pages = {} as {
+const pages = {
+  baseInfo: lazy(() => import('../baseInfo/BaseInfoPage')),
+} as {
   [k in TabName]: React.LazyExoticComponent<any>
 }
 
