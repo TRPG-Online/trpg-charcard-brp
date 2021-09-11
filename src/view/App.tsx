@@ -15,7 +15,7 @@ export const StoreContext = createContext<SheetStore>(new SheetStore(mockStore))
 type SheetMode = 'template' | 'show' | 'edit'
 /** UI state */
 const initState = {
-  mode: 'edit' as SheetMode,
+  mode: 'show' as SheetMode,
   tab: 'baseInfo' as TabName,
   setTab(t: TabName) {
     this.tab = t
@@ -59,7 +59,7 @@ const style = css`
     flex-direction: column;
 
     & > div {
-      margin: 0 1rem;
+      margin: 0 1rem 1rem 1rem;
     }
 
     hr {

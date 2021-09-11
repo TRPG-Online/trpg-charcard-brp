@@ -6,7 +6,7 @@ import { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import GrayCard from '../../components/GrayCard'
 import { BaseInfo } from '../../store/baseInfo'
-import { StoreContext } from '../App'
+import { StoreContext, UIState } from '../App'
 
 const CharAttr: React.FC = () => {
   return (
@@ -17,19 +17,21 @@ const CharAttr: React.FC = () => {
         max-width: 100%;
         flex-wrap: wrap;
 
-        & > .attribute {
+        & > div {
           flex-basis: 33%;
+          box-sizing: border-box;
+          padding: 0 5px;
         }
       `}
     >
-      <Attribute label="str" />
-      <Attribute label="dex" />
-      <Attribute label="int" />
-      <Attribute label="con" />
-      <Attribute label="app" />
-      <Attribute label="pow" />
-      <Attribute label="siz" />
-      <Attribute label="edu" />
+      <AttrWarpper label="str" />
+      <AttrWarpper label="dex" />
+      <AttrWarpper label="int" />
+      <AttrWarpper label="con" />
+      <AttrWarpper label="app" />
+      <AttrWarpper label="pow" />
+      <AttrWarpper label="siz" />
+      <AttrWarpper label="edu" />
       <Total />
     </GrayCard>
   )
@@ -40,6 +42,40 @@ export default CharAttr
 interface AttributeProps {
   label: keyof BaseInfo
 }
+
+const AttrWarpper: React.FC<AttributeProps> = observer(({ label }) => {
+  const store = useContext(StoreContext)
+  const state = useContext(UIState)
+  const { t } = useTranslation('baseInfo')
+
+  switch (state.mode) {
+    case 'edit':
+      return <Attribute label={label} />
+    case 'show':
+      return (
+        <div
+          className="attribute"
+          css={css`
+            display: flex;
+            align-items: center;
+
+            .value {
+              flex: 1;
+              max-height: 2em;
+              margin: 0 5px;
+              text-align: center;
+            }
+          `}
+        >
+          <span>{t(label)}</span>
+          <span className="value">{store.baseInfo[label]}</span>
+        </div>
+      )
+  }
+
+  return null
+})
+
 const Attribute: React.FC<AttributeProps> = observer(({ label }) => {
   const baseInfo = useContext(StoreContext).baseInfo
   const { t } = useTranslation('baseInfo')
@@ -49,8 +85,6 @@ const Attribute: React.FC<AttributeProps> = observer(({ label }) => {
       css={css`
         display: flex;
         align-items: center;
-        box-sizing: border-box;
-        padding: 0 5px;
 
         input {
           flex: 1;
@@ -71,9 +105,19 @@ const Total: React.FC = observer(() => {
   const { t } = useTranslation('baseInfo')
 
   return (
-    <div>
+    <div
+      css={css`
+        display: flex;
+        align-items: center;
+
+        .totalNum {
+          flex: 1;
+          text-align: center;
+        }
+      `}
+    >
       <span>{t('total')}</span>
-      <span>{baseInfo.totalAttr}</span>
+      <span className="totalNum">{baseInfo.totalAttr}</span>
     </div>
   )
 })

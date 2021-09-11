@@ -9,6 +9,7 @@ const StoryBalance: React.FC = () => {
       <BalanceItem label="生活水平" />
       <BalanceItem label="现金" />
       <BalanceItem label="消费水平" />
+      <Assets />
     </GrayCard>
   )
 }
@@ -24,6 +25,21 @@ const BalanceItem: React.FC<{ label: string }> = ({ label }) => {
     >
       <span>{label}</span>
       <UnderLineInput aria-label={label} />
+    </div>
+  )
+}
+
+const Assets: React.FC = () => {
+  return (
+    <div
+      css={css`
+        span {
+          display: block;
+        }
+      `}
+    >
+      <span>资产</span>
+      <textarea cols={30} rows={5} />
     </div>
   )
 }

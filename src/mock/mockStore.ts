@@ -3,16 +3,16 @@ import { PartialDeep } from 'type-fest'
 
 const store: PartialDeep<SheetStore> = {
   baseInfo: {
-    name: '张三',
+    name: '温蒂妮',
     avatar: 'https://i.loli.net/2021/08/27/pogEzeW96bys2t8.png',
 
     hp: 5,
     mp: 3,
     luck: 0,
 
-    job: '',
-    age: 0,
-    sex: '',
+    job: '记者',
+    age: 23,
+    sex: '女',
     location: '',
     homeTown: '',
 

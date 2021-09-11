@@ -1,8 +1,8 @@
 import { css } from '@emotion/react'
 import { ExitTab, PageTab, SaveTab } from './TabItem'
 
-export type TabName = 'baseInfo' | 'skill' | 'magic' | 'story' | 'item'
-const tabs: TabName[] = ['baseInfo', 'skill', 'magic', 'story', 'item']
+export type TabName = 'baseInfo' | 'skill' | 'story' | 'item' | 'tale'
+const tabs: TabName[] = ['baseInfo', 'skill', 'story', 'item', 'tale']
 const TabBar: React.FC = () => {
   return (
     <div css={style}>

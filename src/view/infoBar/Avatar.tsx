@@ -4,6 +4,9 @@ const CharAvatar: React.FC = () => {
   return (
     <div
       css={css`
+        position: absolute;
+        top: 0;
+        left: 0;
         height: 100%;
         margin-right: 1rem;
         box-sizing: border-box;

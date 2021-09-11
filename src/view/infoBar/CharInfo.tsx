@@ -1,6 +1,9 @@
 import { css } from '@emotion/react'
 import { observer } from 'mobx-react'
+import { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
+import { StoreContext, UIState } from '../App'
+import CharAvatar from './Avatar'
 import ProcessBar from './ProcessBar'
 
 const CharInfo: React.FC = () => {
@@ -58,6 +61,7 @@ const InfoAttr: React.FC<AttrProps> = observer(({ label }) => {
       css={css`
         display: flex;
         flex: 1;
+        margin-bottom: 1em;
 
         span {
           word-break: keep-all;
@@ -70,9 +74,24 @@ const InfoAttr: React.FC<AttrProps> = observer(({ label }) => {
       `}
     >
       <InfoLabel label={label} />
-      <input type="text" aria-label={label} size={1} />
+      <AttrWarpper label={label} />
     </div>
   )
+})
+
+const AttrWarpper: React.FC<AttrProps> = observer(({ label }) => {
+  const store = useContext(StoreContext)
+  const state = useContext(UIState)
+
+  switch (state.mode) {
+    case 'edit':
+      return <input type="text" aria-label={label} size={1} />
+    case 'show':
+      //@ts-expect-error
+      return <span>{store.baseInfo[label]}</span>
+  }
+
+  return null
 })
 
 const InfoLabel: React.FC<AttrProps> = ({ label }) => {
@@ -91,6 +110,7 @@ const Avatar: React.FC = () => {
         width: 20%;
         position: relative;
         vertical-align: middle;
+        overflow: hidden;
         text-align: center;
         border: solid 1px #333;
         border-radius: 50%;
@@ -109,6 +129,7 @@ const Avatar: React.FC = () => {
       `}
     >
       <span>{t('selectAvatar')}</span>
+      <CharAvatar />
     </div>
   )
 }
