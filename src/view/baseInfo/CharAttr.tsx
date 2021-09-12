@@ -94,7 +94,21 @@ const Attribute: React.FC<AttributeProps> = observer(({ label }) => {
       `}
     >
       <span>{t(label)}</span>
-      <input type="text" value={baseInfo[label]} aria-label={label} size={1} />
+      <input
+        type="text"
+        value={baseInfo[label]}
+        aria-label={label}
+        size={1}
+        onChange={e => {
+          if (typeof baseInfo[label] === 'number') {
+            //@ts-expect-error
+            baseInfo[label] = Number(e.target.value)
+          } else {
+            //@ts-expect-error
+            baseInfo[label] = e.target.value
+          }
+        }}
+      />
       <FontAwesomeIcon icon={faDice} />
     </div>
   )

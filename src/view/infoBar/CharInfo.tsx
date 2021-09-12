@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import { observer } from 'mobx-react'
 import { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
+import { BaseInfo } from '../../store/baseInfo'
 import { StoreContext, UIState } from '../App'
 import CharAvatar from './Avatar'
 import ProcessBar from './ProcessBar'
@@ -53,7 +54,7 @@ const infoCss = css`
 export default CharInfo
 
 interface AttrProps {
-  label: string
+  label: keyof BaseInfo
 }
 const InfoAttr: React.FC<AttrProps> = observer(({ label }) => {
   return (
@@ -85,9 +86,24 @@ const AttrWarpper: React.FC<AttrProps> = observer(({ label }) => {
 
   switch (state.mode) {
     case 'edit':
-      return <input type="text" aria-label={label} size={1} />
+      return (
+        <input
+          type="text"
+          aria-label={label}
+          size={1}
+          value={store.baseInfo[label]}
+          onChange={e => {
+            if (typeof store.baseInfo[label] === 'number') {
+              //@ts-expect-error
+              store.baseInfo[label] = Number(e.target.value)
+            } else {
+              //@ts-expect-error
+              store.baseInfo[label] = e.target.value
+            }
+          }}
+        />
+      )
     case 'show':
-      //@ts-expect-error
       return <span>{store.baseInfo[label]}</span>
   }
 

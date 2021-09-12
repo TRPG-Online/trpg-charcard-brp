@@ -9,10 +9,11 @@ import './i18next'
 import TabBar, { TabName } from './tab/TabBar'
 import TabContainer from './tab/TabContainer'
 import { useLocalObservable } from 'mobx-react'
+import DevTool from '../components/Devtool'
 
 export const StoreContext = createContext<SheetStore>(new SheetStore(mockStore))
 
-type SheetMode = 'template' | 'show' | 'edit'
+export type SheetMode = 'template' | 'show' | 'edit'
 /** UI state */
 const initState = {
   mode: 'show' as SheetMode,
@@ -38,6 +39,7 @@ const App: React.FC<{ store: SheetStore }> = ({ store }) => {
             </div>
           </div>
         </div>
+        <DevTool />
       </UIState.Provider>
     </StoreContext.Provider>
   )
