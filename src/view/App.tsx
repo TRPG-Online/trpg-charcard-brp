@@ -9,7 +9,7 @@ import './i18next'
 import TabBar, { TabName } from './tab/TabBar'
 import TabContainer from './tab/TabContainer'
 import { useLocalObservable } from 'mobx-react'
-import DevTool from '../components/Devtool'
+import DevTool from '../components/DevTool'
 
 export const StoreContext = createContext<SheetStore>(new SheetStore(mockStore))
 
